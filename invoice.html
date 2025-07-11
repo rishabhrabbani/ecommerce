@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice</title>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .invoice-box {
+      position: relative;
+      background: white;
+      max-width: 794px; /* Approx A4 width at 96dpi */
+      margin: 0 auto;
+      padding: 40px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      color: #333;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .invoice-details {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 10px;
+      gap: 50px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .invoice-details div {
+      flex: 1 1 45%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    table thead {
+      background: #f0f0f0;
+    }
+
+    table th, table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      word-break: break-word;
+    }
+
+    .summary {
+      width: 100%;
+      max-width: 300px;
+      margin-left: auto;
+      font-size: 14px;
+    }
+
+    .summary td {
+      padding: 6px 10px;
+    }
+
+    .summary tr:last-child td {
+      font-weight: bold;
+      border-top: 1px solid #ccc;
+    }
+
+    .signature {
+      margin-top: 60px;
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .notes {
+        margin-top: 40px;
+        font-size: 13px;
+        color: #555;
+        text-align: center; 
+        position: relative; 
+        z-index: 1; 
+    }
+
+    .btn-print {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    @media print {
+      body {
+        background: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .invoice-box {
+        border: none;
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .btn-print {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .invoice-box {
+        padding: 20px;
+      }
+
+      .invoice-details {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .summary {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+      }
+
+      .signature {
+        text-align: left;
+      }
+
+      table th, table td {
+        padding: 8px;
+        font-size: 13px;
+      }
+    }
+
+
+    
+.triangle-top-right,
+.triangle-bottom-left {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 0; /* behind content inside the box */
+}
+
+.triangle-top-right {
+  top: 0;
+  right: 0;
+  background: #0099A0; /* Teal */
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.triangle-bottom-left {
+  bottom: 0;
+  left: 0;
+  background: #F9B7C2; /* Pink */
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+}
+
+  </style>
+</head>
+<body>
+
+
+
+<div class="invoice-box">
+    <div class="triangle-top-right"></div>
+      <div class="triangle-bottom-left"></div>
+  <h1>INVOICE</h1>
+  <div class="header">Rishabh<br/>Viliyanur Main Road, Pondicherry</div>
+
+  <div class="invoice-details">
+    <div>
+      <strong>Billed To:</strong><br/>
+      Rohit<br/>
+      Imperial Road, Cuddalore<br/>
+      +91 9972816389
+    </div>
+    <div>
+      <strong>Invoice:</strong> INV1001<br/>
+      <strong>Date:</strong> <span id="issueDate"></span><br/>
+      <strong>Payment:</strong> Cash / UPI
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Size</th>
+        <th>Unit Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="invoiceBody"></tbody>
+  </table>
+
+  <div class="summary">
+    <table>
+      <tr><td>Subtotal:</td><td>₹<span id="subtotal"></span></td></tr>
+      <tr><td>Discount (20%):</td><td>₹<span id="discount"></span></td></tr>
+      <tr><td>Tax (5%):</td><td>₹<span id="tax"></span></td></tr>
+      <tr><td><strong>Total:</strong></td><td><strong>₹<span id="total"></span></strong></td></tr>
+    </table>
+  </div>
+
+  <div class="signature">
+    _________________________<br/>
+    <strong>Authorized Signature</strong>
+  </div>
+
+  <div class="notes">
+    Thank you for Shopping with us! We appreciate your time and value.
+  </div>
+</div>
+
+<button class="btn-print" onclick="window.print()">Print Invoice</button>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem("invoiceData")) || [];
+  const invoiceBody = document.getElementById("invoiceBody");
+  const issueDate = document.getElementById("issueDate");
+
+  let subtotal = 0;
+
+  cart.forEach(item => {
+    const total = item.price * item.qty;
+    subtotal += total;
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.size}</td>
+      <td>₹${item.price.toFixed(2)}</td>
+      <td>${item.qty}</td>
+      <td>₹${total.toFixed(2)}</td>
+    `;
+    invoiceBody.appendChild(row);
+  });
+
+  const discount = subtotal * 0.2;
+  const tax = (subtotal - discount) * 0.05;
+  const finalTotal = subtotal - discount + tax;
+
+  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("discount").textContent = discount.toFixed(2);
+  document.getElementById("tax").textContent = tax.toFixed(2);
+  document.getElementById("total").textContent = finalTotal.toFixed(2);
+  issueDate.textContent = new Date().toLocaleDateString();
+</script>
+
+</body>
+</html>

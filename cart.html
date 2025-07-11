@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #333;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    #cartTotal {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .remove-btn:hover {
+      background-color: darkred;
+    }
+
+  </style>    
+</head>
+<body>
+
+    <section id="header">
+        <a href="#"><img src="img/logofront.png" class="logo" alt=""></a>
+        <div><ul id="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li id="lg-bag"><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+            <a href="#" id="close"><i class="fas fa-times"></i></a>
+        </ul>
+    </div>
+    <div id="mobile">
+        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>Let's_talk</h2>
+        <p>Leave a Message, We love to hear from you!</p>
+    </section>
+
+    <section id="cart" class="section-p1">
+        <table width=100%>
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <!-- <tbody> -->
+          <tbody id="cartBody">
+                <tr>
+                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="img/products/f1.jpg" alt=""></td>
+                    <td>Cartoon Astronaut Shirts</td>
+                    <td>&#8377; 699</td>
+                    <td><input type="number" value="1"></td>
+                    <td>&#8377; 699</td>
+                </tr>
+                  <tr>
+                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="img/products/f2.jpg" alt=""></td>
+                    <td>Cartoon Astronaut Shirts</td>
+                    <td>&#8377; 499</td>
+                    <td><input type="number" value="1"></td>
+                    <td>&#8377; 499</td>
+                </tr>
+                  <tr>
+                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="img/products/f3.jpg" alt=""></td>
+                    <td>Cartoon Astronaut Shirts</td>
+                    <td>&#8377; 449</td>
+                    <td><input type="number" value="1"></td>
+                    <td>&#8377; 449</td>
+                </tr>
+                  <tr>
+                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="img/products/f4.jpg" alt=""></td>
+                    <td>Cartoon Astronaut Shirts</td>
+                    <td>&#8377; 399</td>
+                    <td><input type="number" value="1"></td>
+                    <td>&#8377; 399</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- <section id="cart" class="section-p1">
+    <table width="100%">
+      <thead>
+        <tr>
+          <td>Remove</td>
+          <td>Image</td>
+          <td>Product</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Subtotal</td>
+        </tr>
+      </thead>
+      <tbody id="cart-table-body">
+      </tbody>
+    </table>
+  </section>
+   -->
+
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" placeholder="Enter Your Coupon">
+                <button class="normal">Apply</button>
+            </div>
+        </div>
+
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td id="cart-subtotal">&#8377; 699</td>
+                </tr>
+                  <tr>
+                    <td>Discount</td>
+                    <td id="cart-discount">20%</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td id="cart-tax">5%</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td id="cart-total"><strong>&#8377; 594</strong></td>
+                </tr>
+            </table>
+            <button class="normal" onclick="goToInvoice()">Proceed to checkout</button>
+            <!-- <button class="normal">Proceed to checkout</button> -->
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logofront.png" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Viliyanur Main Road, Pondicherry</p>
+            <p><strong>Phone:</strong> +91 6385862122 / 04142 276633</p>
+            <p><strong>Hours:</strong> 09:00AM - 09:00PM, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Condition</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play Store</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="">
+                <img src="img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>&#169 2025 Rishabh Copyright Reserved</p>
+        </div>
+    </footer>
+
+
+  <script>
+  let cart = JSON.parse(localStorage.getItem("cartData")) || [];
+  const cartBody = document.getElementById("cartBody");
+  const cartSubtotalElem = document.getElementById("cart-subtotal");
+  const cartDiscountElem = document.getElementById("cart-discount");
+  const cartTaxElem = document.getElementById("cart-tax");
+  const cartTotalElem = document.getElementById("cart-total");
+
+  function renderCart() {
+  cartBody.innerHTML = "";
+  let subtotal = 0;
+
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.qty;
+    subtotal += itemTotal;
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><a href="#" onclick="removeItem(${index})"><i class="far fa-times-circle"></i></a></td>
+      <td><img src="img/products/f${index + 1}.jpg" alt="" width="60px"></td>
+      <td>${item.name} <br><small>Size: ${item.size}</small></td>
+      <td>&#8377; ${item.price.toFixed(2)}</td>
+      <td><input type="number" value="${item.qty}" min="1" onchange="updateQty(${index}, this.value)"></td>
+      <td>&#8377; ${(itemTotal).toFixed(2)}</td>
+    `;
+    cartBody.appendChild(row);
+  });
+
+  // Calculate totals
+  const discountRate = 0.2; // 20%
+  const taxRate = 0.05;     // 5%
+  const discount = subtotal * discountRate;
+  const tax = (subtotal - discount) * taxRate;
+  const total = subtotal - discount + tax;
+
+  // Update DOM
+  cartSubtotalElem.textContent = `₹${subtotal.toFixed(2)}`;
+  cartDiscountElem.textContent = `${discountRate * 100}%`;
+  cartTaxElem.textContent = `${taxRate * 100}%`;
+  cartTotalElem.innerHTML = `<strong>₹${total.toFixed(2)}</strong>`;
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cartData", JSON.stringify(cart));
+  renderCart();
+}
+
+function updateQty(index, qty) {
+  qty = parseInt(qty);
+  if (qty > 0) {
+    cart[index].qty = qty;
+    localStorage.setItem("cartData", JSON.stringify(cart));
+    renderCart();
+  }
+}
+
+// Initialize cart on page load
+renderCart();
+</script>
+
+  <script>
+    function goToInvoice() {
+  localStorage.setItem("invoiceData", JSON.stringify(cart));
+  window.location.href = "invoice.html"; // New invoice page
+}
+
+  </script>
+    <script src="script.js"></script>   
+
+</body>
+</html>

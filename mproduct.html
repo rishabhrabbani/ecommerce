@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#cartTable {
+    width: 100%; /* Full viewport width */
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+#cartTable th, #cartTable td {
+    border: 1px solid #000;
+    padding: 12px 16px;
+    text-align: center;
+    height: 50px;
+}
+
+#cartTable th {
+    background-color: #f4f4f4;
+}
+
+</style>
+<body>
+
+    <section id="header">
+        <a href="#"><img src="img/logofront.png" class="logo" alt=""></a>
+        <div><ul id="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="shop.html">Shop</a></li>
+            <li><a href="blog.htmt">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+            <a href="#" id="close"><i class="fas fa-times"></i></a>
+        </ul>
+    </div>
+    <div id="mobile">
+        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+    </section>
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img src="img/products/f2.jpg" width="100%" id="MainImg" alt="">
+
+            <div class="small-img-group">
+                <div class="small-img-col">
+                    <img src="img/products/f2.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-img-col">
+                    <img src="img/products/f3.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-img-col">
+                    <img src="img/products/f4.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-img-col">
+                    <img src="img/products/f1.jpg" width="100%" class="small-img" alt="">
+                </div>
+            </div>
+        </div>
+        
+        <h2 id="product-title"></h2>
+        <h4 id="product-brand"></h4>
+        <h3 id="product-price"></h3>
+
+         <!-- <div class="single-pro-image">
+            <img src="img/products/f2.jpg" width="100%" id="MainImg" alt="">
+
+            <div class="small-img-group">
+                <div class="small-img-col">
+                    <img src="img/products/f2.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-img-col">
+                    <img src="img/products/f3.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-img-col">
+                    <img src="img/products/f4.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-img-col">
+                    <img src="img/products/f1.jpg" width="100%" class="small-img" alt="">
+                </div>
+            </div>
+        </div> -->
+        
+            <!-- Product Info -->
+        <div class="single-pro-details">
+        <h6>Shirt's Collection</h6>
+        <h2 id="productName">Men's Fashion Shirt</h2>
+        <p id="productPrice">₹649.00</p>
+        <select id="productSize">
+        <option>Select Size</option>
+        <option>XL</option>
+        <option>XXL</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+        </select>
+        <br><br>
+        <input type="number" id="productQty" value="1" min="1" />
+        <button onclick="addToCart()">Add to Cart</button>
+        <h4>Product Details</h4>
+        <span>This shirt offers exceptional comfort and durability. Available at an affordable price, It's the perfect Choice of quality and value.</span>
+        <div style="margin-top: 20px;"></div>
+        <h3>Your Cart</h3><br>
+        <table id="cartTable" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <!-- <table id="cartTable"> -->
+    <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price </th>
+      <th>Quantity</th>
+      <th>Subtotal </th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="cartBody">
+
+  </tbody>
+</table>
+<br>
+<h3 id="cartTotal">Total: ₹0.00</h3>
+
+       <div style="text-align: center; margin-top: 30px;">
+      <button onclick="continueShopping()" style="background-color: #088178; color: white; padding: 12px 24px; font-size: 16px; border: none; border-radius: 4px;">
+        Add to Shopping
+      </button>
+    </div>
+        </div>
+    </section> 
+
+    <section id="product1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="img/products/n1.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut Shirts</h5>
+                    <div class="star">
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                    </div>
+                    <h4>&#8377;499</h4>
+                </div>
+                <a href="#"><i class="fa fa-shopping-cart cart" style="font-size:26px"></i></a>
+            </div>
+            <div class="pro">
+                <img src="img/products/n2.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut Shirts</h5>
+                    <div class="star">
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                    </div>
+                    <h4>&#8377;499</h4>
+                </div>
+                <a href="#"><i class="fa fa-shopping-cart cart" style="font-size:26px"></i></a>
+            </div>
+            <div class="pro">
+                <img src="img/products/n3.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut Shirts</h5>
+                    <div class="star">
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                    </div>
+                    <h4>&#8377;599</h4>
+                </div>
+                <a href="#"><i class="fa fa-shopping-cart cart" style="font-size:26px"></i></a>
+                
+            </div>
+            <div class="pro">
+                <img src="img/products/n4.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut Shirts</h5>
+                    <div class="star">
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                         <i class="fas fa-star"></i>
+                    </div>
+                    <h4>&#8377;599</h4>
+                </div>
+                <a href="#"><i class="fa fa-shopping-cart cart" style="font-size:26px"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up for Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logofront.png" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Viliyanur Main Road, Pondicherry</p>
+            <p><strong>Phone:</strong> +91 6385862122 / 04142 276633</p>
+            <p><strong>Hours:</strong> 09:00AM - 09:00PM, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Condition</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play Store</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="">
+                <img src="img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>&#169 2025 Rishabh Copyright Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        var MainImg = document.getElementById("MainImg");
+        var smallimg = document.getElementsByClassName("small-img");
+
+        smallimg[0].onclick = function(){
+            MainImg.src = smallimg[0].src;
+        }
+         smallimg[1].onclick = function(){
+            MainImg.src = smallimg[1].src;
+        }
+         smallimg[2].onclick = function(){
+            MainImg.src = smallimg[2].src;
+        }
+         smallimg[3].onclick = function(){
+            MainImg.src = smallimg[3].src;
+        }
+    </script>
+
+
+    <script>
+    function continueShopping() {
+  const name = document.getElementById("productName").innerText;
+  const priceText = document.getElementById("productPrice").innerText;
+  const price = parseFloat(priceText.replace("₹", "").trim());
+  const qty = parseInt(document.getElementById("productQty").value);
+  const size = document.getElementById("productSize").value;
+
+  if (!size || size === "Select Size") {
+    alert("Please select a size.");
+    return;
+  }
+
+  const product = { name, price, qty, size };
+
+  let cart = JSON.parse(localStorage.getItem("cartData")) || [];
+  cart.push(product);
+  localStorage.setItem("cartData", JSON.stringify(cart));
+
+  window.location.href = "cart.html";
+}
+</script>
+
+    <!-- <script>
+    let selectedProduct = {
+  name: productTitle, 
+  price: productPrice,
+  qty: productQty,
+  size: productSize,
+  image: productImageSrc // full image src like "img/products/f1.jpg"
+};
+    </script> -->
+
+    <script>
+  function addToCart() {
+    const name = document.getElementById('product-name').innerText;
+    const price = parseFloat(document.getElementById('product-price').innerText.replace("₹", "").trim());
+    const img = document.getElementById('main-img').src;
+    const qty = parseInt(document.getElementById('quantity').value) || 1;
+
+    // Optional: if you have a size selector
+    const size = document.querySelector('input[name="size"]:checked')?.value || "Free";
+
+    const newItem = {
+      name,
+      price,
+      qty,
+      size,
+      img
+    };
+
+    const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+
+    // Check if product already exists in cart (same name and size)
+    const existingIndex = cartData.findIndex(item => item.name === newItem.name && item.size === newItem.size);
+    if (existingIndex > -1) {
+      cartData[existingIndex].qty += qty;
+    } else {
+      cartData.push(newItem);
+    }
+
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+    alert("Item added to cart!");
+  }
+</script>
+
+
+    <script src="script.js"></script>    
+</body>
+</html>
